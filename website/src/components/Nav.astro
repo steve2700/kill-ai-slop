@@ -3,8 +3,10 @@ import T from "./T.astro";
 import LangToggle from "./LangToggle.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import SoundToggle from "./SoundToggle.astro";
+import InstallButton from "./InstallButton.astro";
 
 const links = [
+  { href: "#test", zh: "试一试", en: "Try it", ja: "試す", ko: "해보기" },
   { href: "#what", zh: "什么是 slop", en: "What it is", ja: "slop とは", ko: "slop 이란" },
   { href: "#catalogue", zh: "图鉴", en: "Catalogue", ja: "図鑑", ko: "도감" },
   { href: "#principles", zh: "原则", en: "Principles", ja: "原則", ko: "원칙" },
@@ -33,6 +35,7 @@ const links = [
       <LangToggle />
       <ThemeToggle />
       <SoundToggle />
+      <InstallButton />
       <a
         class="gh"
         href="https://github.com/yetone/kill-ai-slop"

@@ -58,6 +58,14 @@ const ogAlt =
     <meta name="twitter:image:alt" content={ogAlt} />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131316" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Kill AI Slop" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     {/* Pre-paint: resolve the language before first render, no flash. English
         is the default; on first visit we switch to the OS language if it's one
         we support (中文 / 日本語 / 한국어), otherwise stay in English. */}
@@ -155,6 +163,15 @@ const ogAlt =
     </main>
     <Footer />
 
+    <script>
+      // PWA: register the service worker in production builds only, so
+      // `npm run dev` never serves stale cached pages.
+      if (import.meta.env.PROD && "serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js").catch(() => {});
+        });
+      }
+    </script>
     <script>
       // Entrance motion. Reveals every [data-reveal] block as it enters view.
       // Fully defensive: reduced-motion or a missing IntersectionObserver

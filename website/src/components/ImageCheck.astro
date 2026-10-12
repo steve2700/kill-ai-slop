@@ -1,0 +1,958 @@
+---
+import T from "./T.astro";
+---
+
+<div class="imgcheck" data-imagecheck>
+  <section class="card up" aria-labelledby="ic-up-h">
+    <h3 id="ic-up-h"><T en="Upload an image" zh="上传图片" ja="画像をアップロード" ko="이미지 업로드" /></h3>
+    <p class="hint">
+      <T
+        en="A poster, flyer, banner or generated graphic."
+        zh="海报、传单、横幅，或生成的图形。"
+        ja="ポスター、チラシ、バナー、生成されたグラフィック。"
+        ko="포스터, 전단, 배너, 생성된 그래픽."
+      />
+    </p>
+
+    <label class="drop" data-drop>
+      <input type="file" accept="image/png,image/jpeg,image/webp" data-file />
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 15.5v-11M7.5 9 12 4.5 16.5 9M4.5 19.5h15"></path>
+      </svg>
+      <span>
+        <T
+          en="Drop an image here, or browse"
+          zh="把图片拖到这里，或点击选择"
+          ja="ここに画像をドロップ、または選択"
+          ko="이미지를 여기에 놓거나 찾아보기"
+        />
+      </span>
+      <small>
+        <T en="You can also paste with Ctrl+V." zh="也可以按 Ctrl+V 粘贴。" ja="Ctrl+V で貼り付けもできる。" ko="Ctrl+V 로 붙여넣을 수도 있다." />
+      </small>
+    </label>
+
+    <div class="or"><span><T en="Or try samples" zh="或试试示例" ja="またはサンプルで試す" ko="또는 샘플로 해보기" /></span></div>
+    <div class="samples">
+      <button type="button" data-sample="/demo/sample-glossy.jpg">
+        <T en="Glossy poster" zh="光亮海报" ja="つやのあるポスター" ko="매끈한 포스터" />
+      </button>
+      <button type="button" data-sample="/demo/sample-printed.jpg">
+        <T en="Printed poster" zh="印刷海报" ja="印刷したポスター" ko="인쇄한 포스터" />
+      </button>
+    </div>
+
+    <p class="fine">
+      <T
+        en="Runs in your browser. The image is not uploaded anywhere."
+        zh="在你的浏览器里运行，图片不会上传到任何地方。"
+        ja="ブラウザ内で動く。画像はどこにもアップロードされない。"
+        ko="브라우저 안에서 실행된다. 이미지는 어디에도 업로드되지 않는다."
+      />
+    </p>
+  </section>
+
+  <section class="card out" aria-labelledby="ic-out-h" aria-live="polite">
+    <h3 id="ic-out-h"><T en="Review" zh="评审结果" ja="レビュー" ko="리뷰" /></h3>
+
+    <div class="empty" data-empty>
+      <T en="No image reviewed yet" zh="还没有评审过图片" ja="まだ画像をレビューしていない" ko="아직 리뷰한 이미지가 없다" />
+    </div>
+
+    <div class="result" data-result hidden>
+      <img data-preview alt="" />
+      <p class="verdict" data-verdict></p>
+      <p class="count" data-count></p>
+      <ul class="signals" data-signals></ul>
+      <div class="todo" data-todo hidden>
+        <h4 data-todo-h></h4>
+        <ul data-todo-list></ul>
+      </div>
+      <p class="fine" data-note></p>
+
+      <div class="touch" data-touch>
+        <h4 data-touch-h></h4>
+        <p class="fine" data-touch-p></p>
+        <label class="strength"><span data-strength-l></span>
+          <input type="range" min="20" max="100" value="70" data-strength />
+        </label>
+        <div class="actions">
+          <button type="button" class="btn" data-apply></button>
+        </div>
+        <div class="after" data-after hidden>
+          <p class="verdict small" data-after-count></p>
+          <p class="fine" data-after-left></p>
+          <div class="actions">
+            <button type="button" class="btn ghost" data-toggle></button>
+            <button type="button" class="btn" data-dl-png></button>
+            <button type="button" class="btn" data-dl-jpg></button>
+          </div>
+          <p class="fine" data-after-note></p>
+          <div class="actions">
+            <button type="button" class="btn" data-goto-build></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn" data-copy></button>
+        <button type="button" class="btn ghost" data-clear></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card build" id="build" data-build aria-labelledby="ic-build-h">
+    <h3 id="ic-build-h" data-build-h></h3>
+    <p class="hint" data-build-p></p>
+    <div class="bgrid">
+      <div class="bform">
+        <label class="fld"><span data-l-headline></span>
+          <input type="text" maxlength="40" value="Trade in your old phone" data-b-headline />
+        </label>
+        <label class="fld"><span data-l-line></span>
+          <input type="text" maxlength="70" value="Quoted the same day." data-b-line />
+        </label>
+        <label class="fld"><span data-l-contact></span>
+          <input type="text" maxlength="28" value="012 345 6789" data-b-contact />
+        </label>
+        <fieldset class="opt">
+          <legend data-l-accent></legend>
+          <label class="sw"><input type="radio" name="acc" value="#b3261e" checked data-b-accent /><i style="background:#b3261e"></i></label>
+          <label class="sw"><input type="radio" name="acc" value="#246a50" data-b-accent /><i style="background:#246a50"></i></label>
+          <label class="sw"><input type="radio" name="acc" value="#2a4d9b" data-b-accent /><i style="background:#2a4d9b"></i></label>
+          <label class="sw"><input type="radio" name="acc" value="#c9561b" data-b-accent /><i style="background:#c9561b"></i></label>
+        </fieldset>
+        <fieldset class="opt">
+          <legend data-l-ground></legend>
+          <label class="pill"><input type="radio" name="gnd" value="paper" checked data-b-ground /><span data-l-paper></span></label>
+          <label class="pill"><input type="radio" name="gnd" value="ink" data-b-ground /><span data-l-ink></span></label>
+        </fieldset>
+        <label class="fld"><span data-l-photo></span>
+          <input type="file" accept="image/png,image/jpeg,image/webp" data-b-photo />
+        </label>
+        <label class="check"><input type="checkbox" checked data-b-grain /><span data-l-grain></span></label>
+        <div class="actions">
+          <button type="button" class="btn" data-b-png></button>
+          <button type="button" class="btn" data-b-jpg></button>
+        </div>
+        <p class="fine" data-b-score></p>
+        <p class="fine" data-b-limit></p>
+      </div>
+      <div class="bprev"><canvas data-b-canvas aria-label="Poster preview"></canvas></div>
+    </div>
+  </section>
+</div>
+
+<script>
+  import { analyze, type Report, type SignalId } from "../scripts/imageCheck";
+  import { humanize } from "../scripts/humanTouch";
+  import { drawPoster } from "../scripts/posterBuilder";
+
+  type Lang = "en" | "zh" | "ja" | "ko";
+  type Tx = Record<Lang, string>;
+  const tx = (en: string, zh: string, ja: string, ko: string): Tx => ({ en, zh, ja, ko });
+
+  const UI = {
+    verdict_machine: tx("Reads as machine-polished", "读起来像机器打磨出来的", "機械的に磨かれて見える", "기계가 다듬은 것처럼 읽힌다"),
+    verdict_mixed: tx("Some machine polish", "带有一部分机器打磨的痕迹", "機械的な磨きが一部ある", "기계가 다듬은 흔적이 일부 있다"),
+    verdict_hand: tx("Reads as hand-made", "读起来像人做的", "人の手で作ったように見える", "사람 손으로 만든 것처럼 읽힌다"),
+    count: tx("{n} of 6 signals", "6 项信号中有 {n} 项", "6 つのサインのうち {n} つ", "신호 6개 중 {n}개"),
+    todo: tx("What a person would do", "人会怎么做", "人ならこうする", "사람이라면 이렇게 한다"),
+    note: tx(
+      "This measures how polished the pixels are. It is not an AI detector, and a person can polish on purpose. Photos of real scenes can score as polished too.",
+      "这里测的是像素有多光滑精致，不是 AI 检测器；人也可能刻意打磨。真实场景的照片也可能得到较高的打磨分。",
+      "測っているのは画素の磨かれ具合で、AI 検出器ではない。人が意図して磨くこともある。実景の写真も磨かれた判定になることがある。",
+      "측정하는 것은 픽셀이 얼마나 다듬어졌는가이지 AI 탐지가 아니다. 사람도 일부러 다듬을 수 있다. 실제 풍경 사진도 다듬어진 것으로 나올 수 있다.",
+    ),
+    copy: tx("Copy review prompt", "复制评审提示词", "レビュー用プロンプトをコピー", "리뷰 프롬프트 복사"),
+    copied: tx("Copied", "已复制", "コピーした", "복사했다"),
+    clear: tx("Clear", "清除", "クリア", "지우기"),
+    touchH: tx("Add human touch", "加上人的手感", "人の手触りを足す", "사람 손맛 더하기"),
+    touchP: tx(
+      "Adds grain, print slip and a paper tone, and pulls back glow and saturation. The layout stays as it is.",
+      "加入颗粒、套印偏差和纸张色调，并收敛光晕与饱和度。版面保持不变。",
+      "粒子、刷りのずれ、紙の色味を足し、グローと彩度を抑える。レイアウトはそのまま。",
+      "입자, 인쇄 어긋남, 종이 색조를 더하고 광채와 채도를 낮춘다. 레이아웃은 그대로다.",
+    ),
+    strength: tx("Strength", "强度", "強さ", "강도"),
+    apply: tx("Apply", "应用", "適用", "적용"),
+    working: tx("Working…", "处理中…", "処理中…", "처리 중…"),
+    after: tx("After: {n} of 6 signals (was {m})", "处理后：6 项信号中有 {n} 项（之前 {m} 项）", "適用後：6 つのサインのうち {n} つ（以前は {m} つ）", "적용 후: 신호 6개 중 {n}개 (이전 {m}개)"),
+    left: tx("Still flagged: {list}", "仍然命中：{list}", "まだ該当：{list}", "여전히 해당: {list}"),
+    allClear: tx("No signals left.", "没有剩余的信号。", "残るサインはない。", "남은 신호가 없다."),
+    showOrig: tx("Show original", "查看原图", "元の画像を見る", "원본 보기"),
+    showNew: tx("Show touched-up", "查看处理后", "処理後を見る", "처리본 보기"),
+    dlPng: tx("Download PNG", "下载 PNG", "PNG をダウンロード", "PNG 다운로드"),
+    dlJpg: tx("Download JPG", "下载 JPG", "JPG をダウンロード", "JPG 다운로드"),
+    gotoBuild: tx("Rebuild with less", "用更少的内容重做", "減らして作り直す", "덜어내고 다시 만들기"),
+    afterNote: tx(
+      "This changes finish only. Too much on the sheet, quiet space and symmetry need a redesign, not a filter, and the poster’s content is untouched.",
+      "这只改变质感。内容太多、留白和对称需要重新设计，而不是滤镜；海报的内容没有被改动。",
+      "変わるのは仕上げだけ。情報の詰め込み、余白、対称はフィルターではなく設計し直しが必要で、ポスターの内容には手を触れていない。",
+      "바뀌는 것은 마감뿐이다. 너무 많은 내용, 여백, 대칭은 필터가 아니라 재설계가 필요하고, 포스터의 내용은 건드리지 않는다.",
+    ),
+    buildH: tx("Rebuild with less", "用更少的内容重做", "減らして作り直す", "덜어내고 다시 만들기"),
+    buildP: tx(
+      "AI posters usually say too much. Keep one headline, one line and one contact. The limits are on purpose: one typeface, one accent, set off-centre with room to breathe.",
+      "AI 做的海报通常说得太多。只留一个标题、一句话、一个联系方式。限制是故意的：一种字体、一个强调色、偏离中心，并留出空白。",
+      "AI のポスターはたいてい言いすぎている。見出し一つ、一文、連絡先一つだけを残す。制限はわざとで、書体は一つ、アクセントは一つ、中心をずらして余白を残す。",
+      "AI 포스터는 대개 말이 너무 많다. 제목 하나, 한 줄, 연락처 하나만 남긴다. 제한은 일부러 둔 것이다. 서체 하나, 강조색 하나, 중심에서 벗어나게 놓고 여백을 둔다.",
+    ),
+    lHeadline: tx("Headline (max 40)", "标题（最多 40 字）", "見出し（最大 40 字）", "제목 (최대 40자)"),
+    lLine: tx("One supporting line (max 70)", "一句补充（最多 70 字）", "補足の一文（最大 70 字）", "보조 한 줄 (최대 70자)"),
+    lContact: tx("Contact (max 28)", "联系方式（最多 28 字）", "連絡先（最大 28 字）", "연락처 (최대 28자)"),
+    lAccent: tx("One accent colour", "一个强调色", "アクセント色は一つ", "강조색 하나"),
+    lGround: tx("Ground", "底色", "地の色", "바탕"),
+    lPaper: tx("Paper", "纸色", "紙", "종이"),
+    lInk: tx("Ink", "墨色", "墨", "먹"),
+    lPhoto: tx("One photo of the real thing (optional)", "一张真实物品的照片（可选）", "実物の写真を一枚（任意）", "실물 사진 한 장 (선택)"),
+    lGrain: tx("Add grain and paper tone", "加入颗粒和纸张色调", "粒子と紙の色味を足す", "입자와 종이 색조 더하기"),
+    bScore: tx("This poster: {n} of 6 signals", "这张海报：6 项信号中有 {n} 项", "このポスター：6 つのサインのうち {n} つ", "이 포스터: 신호 6개 중 {n}개"),
+    bLimit: tx(
+      "Everything is drawn in your browser. Nothing is uploaded.",
+      "全部在你的浏览器里绘制，不会上传任何内容。",
+      "すべてブラウザ内で描画される。何もアップロードされない。",
+      "모두 브라우저 안에서 그려진다. 아무것도 업로드되지 않는다.",
+    ),
+    error: tx("Could not read that file. Use a PNG, JPG or WebP.", "无法读取该文件。请使用 PNG、JPG 或 WebP。", "そのファイルは読めなかった。PNG、JPG、WebP を使う。", "그 파일을 읽을 수 없다. PNG, JPG, WebP 를 쓴다."),
+  };
+
+  const SIG: Record<SignalId, { name: Tx; flag: Tx; ok: Tx; fix: Tx }> = {
+    grain: {
+      name: tx("Grain", "颗粒感", "粒状感", "입자감"),
+      flag: tx("No noise or texture anywhere. Every flat area is perfectly clean.", "哪里都没有噪点或质感，所有平面都干净得一尘不染。", "ノイズも質感もどこにもない。平らな面がすべて完璧にきれい。", "노이즈도 질감도 어디에도 없다. 평평한 면이 모두 완벽하게 깨끗하다."),
+      ok: tx("Some natural noise or texture is present.", "有一些自然的噪点或质感。", "自然なノイズや質感がある。", "자연스러운 노이즈나 질감이 있다."),
+      fix: tx("Add real texture: print it and rescan, or lay paper grain over the flat areas.", "加入真实的质感：打印后重新扫描，或在平面上叠一层纸张颗粒。", "本物の質感を足す。印刷して撮り直すか、平らな面に紙の粒子を重ねる。", "진짜 질감을 더한다. 인쇄해서 다시 스캔하거나 평평한 면에 종이 입자를 얹는다."),
+    },
+    quiet: {
+      name: tx("Quiet space", "留白", "余白", "여백"),
+      flag: tx("Almost every part is busy. Nothing is left empty.", "几乎每个角落都很满，没有留空。", "ほぼすべての場所が埋まっている。空けた場所がない。", "거의 모든 곳이 가득 차 있다. 비워 둔 곳이 없다."),
+      ok: tx("There is room to rest.", "有可以喘息的留白。", "目を休める余白がある。", "쉬어 갈 여백이 있다."),
+      fix: tx("Remove a third of the elements. Leave one large area empty.", "删掉三分之一的元素，留出一大块空白。", "要素を三分の一減らす。大きな余白を一か所残す。", "요소를 삼분의 일 줄인다. 큰 여백을 한 곳 남긴다."),
+    },
+    glow: {
+      name: tx("Glow", "光晕", "グロー", "광채"),
+      flag: tx("Soft, saturated halos on a dark ground.", "深色底上有柔和、饱和的光晕。", "暗い地に、柔らかく彩度の高い光輪がある。", "어두운 바탕에 부드럽고 채도 높은 후광이 있다."),
+      ok: tx("No glow haze found.", "没有发现光晕。", "グローは見つからない。", "광채는 발견되지 않았다."),
+      fix: tx("Take out the halo. One tight contact shadow is enough.", "去掉光晕，一道贴地的接触阴影就够了。", "光輪を外す。接地する影が一つあれば足りる。", "후광을 뺀다. 바닥에 닿는 그림자 하나면 충분하다."),
+    },
+    symmetry: {
+      name: tx("Symmetry", "对称", "対称", "대칭"),
+      flag: tx("Left and right mirror each other. Everything sits on one centre axis.", "左右几乎互为镜像，一切都排在同一条中轴线上。", "左右がほぼ鏡像で、すべてが一本の中心軸に載っている。", "좌우가 거의 거울상이다. 모든 것이 한 중심축 위에 놓여 있다."),
+      ok: tx("The layout is not mirrored.", "版面不是镜像对称。", "レイアウトは鏡像ではない。", "레이아웃이 거울상이 아니다."),
+      fix: tx("Move the main element off the centre axis and balance it with space, not a mirror.", "把主体移出中轴线，用留白而不是镜像来平衡。", "主役を中心軸からずらし、鏡像ではなく余白でバランスを取る。", "주인공을 중심축에서 옮기고 거울상이 아니라 여백으로 균형을 잡는다."),
+    },
+    ramps: {
+      name: tx("Smooth gradients", "平滑渐变", "なめらかなグラデーション", "매끄러운 그라디언트"),
+      flag: tx("Large areas are perfect gradient ramps with no texture.", "大片区域是毫无质感的完美渐变。", "広い面が質感のない完璧なグラデーションになっている。", "넓은 면이 질감 없는 완벽한 그라디언트다."),
+      ok: tx("Few perfectly smooth ramps.", "完美平滑的渐变很少。", "完璧になめらかなグラデーションは少ない。", "완벽하게 매끄러운 그라디언트가 적다."),
+      fix: tx("Use flat colour instead, or a visible halftone or grain.", "改用纯色，或看得见的网点或颗粒。", "単色にするか、見えるハーフトーンや粒子を使う。", "단색으로 바꾸거나 눈에 보이는 망점이나 입자를 쓴다."),
+    },
+    saturation: {
+      name: tx("Saturation", "饱和度", "彩度", "채도"),
+      flag: tx("A large share of the image is fully saturated colour.", "画面里有很大比例是满饱和的颜色。", "画面の多くが最大彩度の色で占められている。", "화면의 상당 부분이 최대 채도의 색이다."),
+      ok: tx("Colour is restrained.", "色彩比较克制。", "色は抑えられている。", "색이 절제되어 있다."),
+      fix: tx("Mute the palette. Keep one saturated accent and let the rest sit back.", "压低整体色彩，只留一个饱和的强调色，其余退后。", "パレットを抑える。彩度の高いアクセントは一つだけ残し、あとは引く。", "팔레트를 낮춘다. 채도 높은 강조색은 하나만 두고 나머지는 물러서게 한다."),
+    },
+  };
+  const ORDER: SignalId[] = ["grain", "quiet", "glow", "symmetry", "ramps", "saturation"];
+
+  const PROMPT = `Review the attached image for a machine-made look. Judge the visual finish only, not the wording or the facts.
+
+Check each of these and say what you see and where:
+1. Grain: is there any noise, paper texture or print imperfection, or is every flat area perfectly clean?
+2. Quiet space: is anything left empty, or is every region filled and finished to the same level?
+3. Glow: halos, light bloom or reflections behind or under the subject.
+4. Symmetry: is the layout mirrored around a centre axis?
+5. Smooth gradients: large areas of perfect gradient with no texture.
+6. Saturation: how much of the image is fully saturated colour, and is there one accent or many?
+7. Information load: count the separate messages (slogans, claims, badges, contact details). A poster should carry one.
+
+Then say where a person would have made a different choice (uneven edges, off-centre placement, texture, empty space, one accent), and give three concrete changes that would add human touch. Do not guess whether it was made by AI.`;
+
+  const root = document.querySelector<HTMLElement>("[data-imagecheck]")!;
+  const q = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+  const file = q<HTMLInputElement>("[data-file]");
+  const drop = q("[data-drop]");
+  const empty = q("[data-empty]");
+  const result = q("[data-result]");
+  const preview = q<HTMLImageElement>("[data-preview]");
+  const verdictEl = q("[data-verdict]");
+  const countEl = q("[data-count]");
+  const list = q("[data-signals]");
+  const todo = q("[data-todo]");
+  const todoH = q("[data-todo-h]");
+  const todoList = q("[data-todo-list]");
+  const note = q("[data-note]");
+  const copyBtn = q<HTMLButtonElement>("[data-copy]");
+  const clearBtn = q<HTMLButtonElement>("[data-clear]");
+  const touchH = q("[data-touch-h]");
+  const touchP = q("[data-touch-p]");
+  const strengthL = q("[data-strength-l]");
+  const strength = q<HTMLInputElement>("[data-strength]");
+  const applyBtn = q<HTMLButtonElement>("[data-apply]");
+  const afterBox = q("[data-after]");
+  const afterCount = q("[data-after-count]");
+  const afterLeft = q("[data-after-left]");
+  const afterNote = q("[data-after-note]");
+  const toggleBtn = q<HTMLButtonElement>("[data-toggle]");
+  const dlPng = q<HTMLButtonElement>("[data-dl-png]");
+  const dlJpg = q<HTMLButtonElement>("[data-dl-jpg]");
+
+  const gotoBuild = q<HTMLButtonElement>("[data-goto-build]");
+  const buildEl = root.querySelector<HTMLElement>("[data-build]")!;
+  const bq = <T extends HTMLElement>(sel: string) => buildEl.querySelector<T>(sel)!;
+  const bCanvas = bq<HTMLCanvasElement>("[data-b-canvas]");
+  const bHead = bq<HTMLInputElement>("[data-b-headline]");
+  const bLine = bq<HTMLInputElement>("[data-b-line]");
+  const bContact = bq<HTMLInputElement>("[data-b-contact]");
+  const bPhoto = bq<HTMLInputElement>("[data-b-photo]");
+  const bGrain = bq<HTMLInputElement>("[data-b-grain]");
+  const bScore = bq("[data-b-score]");
+  const bPng = bq<HTMLButtonElement>("[data-b-png]");
+  const bJpg = bq<HTMLButtonElement>("[data-b-jpg]");
+  const setText = (sel: string, tx_: Tx) => (bq(sel).textContent = tx_[lang()]);
+  let bPhotoImg: HTMLImageElement | null = null;
+  let bReport: Report | null = null;
+  let bTimer = 0;
+
+  let srcImg: HTMLImageElement | null = null;
+  let origSrc = "";
+  let touchedUrl: string | null = null;
+  let touchedCanvas: HTMLCanvasElement | null = null;
+  let afterReport: Report | null = null;
+  let showingNew = false;
+  let applying = false;
+
+  const lang = (): Lang => {
+    const l = document.documentElement.dataset.lang as Lang;
+    return l === "zh" || l === "ja" || l === "ko" ? l : "en";
+  };
+  let last: Report | null = null;
+  let objectUrl: string | null = null;
+  let copyTimer = 0;
+
+  function render() {
+    const l = lang();
+    copyBtn.textContent = UI.copy[l];
+    clearBtn.textContent = UI.clear[l];
+    touchH.textContent = UI.touchH[l];
+    touchP.textContent = UI.touchP[l];
+    strengthL.textContent = UI.strength[l];
+    applyBtn.textContent = applying ? UI.working[l] : UI.apply[l];
+    dlPng.textContent = UI.dlPng[l];
+    dlJpg.textContent = UI.dlJpg[l];
+    afterNote.textContent = UI.afterNote[l];
+    toggleBtn.textContent = showingNew ? UI.showOrig[l] : UI.showNew[l];
+    gotoBuild.textContent = UI.gotoBuild[l] + " ↓";
+    setText("[data-build-h]", UI.buildH); setText("[data-build-p]", UI.buildP);
+    setText("[data-l-headline]", UI.lHeadline); setText("[data-l-line]", UI.lLine);
+    setText("[data-l-contact]", UI.lContact); setText("[data-l-accent]", UI.lAccent);
+    setText("[data-l-ground]", UI.lGround); setText("[data-l-paper]", UI.lPaper);
+    setText("[data-l-ink]", UI.lInk); setText("[data-l-photo]", UI.lPhoto);
+    setText("[data-l-grain]", UI.lGrain); setText("[data-b-limit]", UI.bLimit);
+    bPng.textContent = UI.dlPng[l]; bJpg.textContent = UI.dlJpg[l];
+    bScore.textContent = bReport ? UI.bScore[l].replace("{n}", String(bReport.flagged)) : "";
+    if (last && afterReport) {
+      afterCount.textContent = UI.after[l].replace("{n}", String(afterReport.flagged)).replace("{m}", String(last.flagged));
+      const names = ORDER.filter((id) => afterReport!.signals.find((x) => x.id === id)!.flagged).map((id) => SIG[id].name[l]);
+      afterLeft.textContent = names.length ? UI.left[l].replace("{list}", names.join(", ")) : UI.allClear[l];
+    }
+    if (!last) return;
+    verdictEl.textContent = UI[`verdict_${last.verdict}` as const][l];
+    countEl.textContent = UI.count[l].replace("{n}", String(last.flagged));
+    list.replaceChildren(
+      ...ORDER.map((id) => {
+        const s = last!.signals.find((x) => x.id === id)!;
+        const li = document.createElement("li");
+        li.className = s.flagged ? "flag" : "ok";
+        const dot = document.createElement("i");
+        dot.setAttribute("aria-hidden", "true");
+        const b = document.createElement("b");
+        b.textContent = SIG[id].name[l];
+        const p = document.createElement("span");
+        p.textContent = (s.flagged ? SIG[id].flag : SIG[id].ok)[l];
+        li.append(dot, b, p);
+        return li;
+      }),
+    );
+    const flagged = ORDER.filter((id) => last!.signals.find((x) => x.id === id)!.flagged);
+    todo.hidden = flagged.length === 0;
+    todoH.textContent = UI.todo[l];
+    todoList.replaceChildren(
+      ...flagged.map((id) => {
+        const li = document.createElement("li");
+        li.textContent = SIG[id].fix[l];
+        return li;
+      }),
+    );
+    note.textContent = UI.note[l];
+  }
+
+  function resetTouch() {
+    if (touchedUrl) URL.revokeObjectURL(touchedUrl);
+    touchedUrl = null;
+    touchedCanvas = null;
+    afterReport = null;
+    showingNew = false;
+    afterBox.hidden = true;
+  }
+
+  function clear() {
+    resetTouch();
+    srcImg = null;
+    last = null;
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = null;
+    preview.removeAttribute("src");
+    result.hidden = true;
+    empty.hidden = false;
+    file.value = "";
+  }
+
+  function showError() {
+    clear();
+    empty.textContent = UI.error[lang()];
+  }
+
+  async function run(src: string, revoke: boolean) {
+    try {
+      const im = new Image();
+      im.src = src;
+      await im.decode();
+      const m = Math.min(1, 512 / Math.max(im.naturalWidth, im.naturalHeight));
+      const w = Math.max(16, Math.round(im.naturalWidth * m));
+      const h = Math.max(16, Math.round(im.naturalHeight * m));
+      const c = document.createElement("canvas");
+      c.width = w;
+      c.height = h;
+      const ctx = c.getContext("2d", { willReadFrequently: true })!;
+      ctx.drawImage(im, 0, 0, w, h);
+      const d = ctx.getImageData(0, 0, w, h);
+      last = analyze({ data: d.data, width: w, height: h });
+      resetTouch();
+      srcImg = im;
+      origSrc = src;
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+      objectUrl = revoke ? src : null;
+      preview.src = src;
+      empty.hidden = true;
+      result.hidden = false;
+      render();
+    } catch {
+      if (revoke) URL.revokeObjectURL(src);
+      showError();
+    }
+  }
+
+  function take(f: File | undefined | null) {
+    if (!f || !/^image\/(png|jpeg|webp)$/.test(f.type)) return showError();
+    run(URL.createObjectURL(f), true);
+  }
+
+  file.addEventListener("change", () => take(file.files?.[0]));
+  root.querySelectorAll<HTMLButtonElement>("[data-sample]").forEach((b) =>
+    b.addEventListener("click", () => run(b.dataset.sample!, false)),
+  );
+  ["dragenter", "dragover"].forEach((e) =>
+    drop.addEventListener(e, (ev) => { ev.preventDefault(); drop.classList.add("over"); }),
+  );
+  ["dragleave", "drop"].forEach((e) =>
+    drop.addEventListener(e, () => drop.classList.remove("over")),
+  );
+  drop.addEventListener("drop", (ev) => {
+    ev.preventDefault();
+    take((ev as DragEvent).dataTransfer?.files?.[0]);
+  });
+  document.addEventListener("paste", (ev) => {
+    const f = Array.from(ev.clipboardData?.files ?? []).find((x) => x.type.startsWith("image/"));
+    if (f) take(f);
+  });
+  clearBtn.addEventListener("click", clear);
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(PROMPT);
+      copyBtn.textContent = UI.copied[lang()];
+      clearTimeout(copyTimer);
+      copyTimer = window.setTimeout(render, 1600);
+    } catch {}
+  });
+  async function apply() {
+    if (!srcImg || applying) return;
+    applying = true;
+    render();
+    await new Promise((r) => setTimeout(r, 30)); // let the button text paint
+    try {
+      const im = srcImg;
+      const m = Math.min(1, 2400 / Math.max(im.naturalWidth, im.naturalHeight));
+      const w = Math.max(16, Math.round(im.naturalWidth * m));
+      const h = Math.max(16, Math.round(im.naturalHeight * m));
+      const c = document.createElement("canvas");
+      c.width = w;
+      c.height = h;
+      const ctx = c.getContext("2d", { willReadFrequently: true })!;
+      ctx.drawImage(im, 0, 0, w, h);
+      const d = ctx.getImageData(0, 0, w, h);
+      const out = humanize({ data: d.data, width: w, height: h }, Number(strength.value) / 100);
+      ctx.putImageData(new ImageData(out, w, h), 0, 0);
+      // Re-score the result at the same working size as the original check.
+      const k = Math.min(1, 512 / Math.max(w, h));
+      const sw = Math.max(16, Math.round(w * k)), sh = Math.max(16, Math.round(h * k));
+      const sc = document.createElement("canvas");
+      sc.width = sw;
+      sc.height = sh;
+      const sctx = sc.getContext("2d", { willReadFrequently: true })!;
+      sctx.drawImage(c, 0, 0, sw, sh);
+      const sd = sctx.getImageData(0, 0, sw, sh);
+      afterReport = analyze({ data: sd.data, width: sw, height: sh });
+      touchedCanvas = c;
+      const blob: Blob = await new Promise((res) => c.toBlob((b) => res(b!), "image/png"));
+      if (touchedUrl) URL.revokeObjectURL(touchedUrl);
+      touchedUrl = URL.createObjectURL(blob);
+      showingNew = true;
+      preview.src = touchedUrl;
+      afterBox.hidden = false;
+    } catch {
+      showError();
+    }
+    applying = false;
+    render();
+  }
+
+  function download(type: "image/png" | "image/jpeg", ext: string) {
+    if (!touchedCanvas) return;
+    touchedCanvas.toBlob(
+      (b) => {
+        if (!b) return;
+        const url = URL.createObjectURL(b);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `human-touch.${ext}`;
+        document.body.append(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+      },
+      type,
+      0.92,
+    );
+  }
+
+  function buildPoster() {
+    const accent = buildEl.querySelector<HTMLInputElement>("[data-b-accent]:checked")?.value ?? "#b3261e";
+    const ground = (buildEl.querySelector<HTMLInputElement>("[data-b-ground]:checked")?.value ?? "paper") as "paper" | "ink";
+    drawPoster(bCanvas, { headline: bHead.value, line: bLine.value, contact: bContact.value, accent, ground, photo: bPhotoImg });
+    if (bGrain.checked) {
+      const ctx = bCanvas.getContext("2d", { willReadFrequently: true })!;
+      const d = ctx.getImageData(0, 0, bCanvas.width, bCanvas.height);
+      ctx.putImageData(new ImageData(humanize({ data: d.data, width: d.width, height: d.height }, 0.6), d.width, d.height), 0, 0);
+    }
+    const k = 512 / Math.max(bCanvas.width, bCanvas.height);
+    const sw = Math.round(bCanvas.width * k), sh = Math.round(bCanvas.height * k);
+    const sc = document.createElement("canvas");
+    sc.width = sw; sc.height = sh;
+    const sctx = sc.getContext("2d", { willReadFrequently: true })!;
+    sctx.drawImage(bCanvas, 0, 0, sw, sh);
+    const sd = sctx.getImageData(0, 0, sw, sh);
+    bReport = analyze({ data: sd.data, width: sw, height: sh });
+    render();
+  }
+  const queueBuild = () => { clearTimeout(bTimer); bTimer = window.setTimeout(buildPoster, 200); };
+  buildEl.querySelectorAll("input[type=text], input[type=radio], input[type=checkbox]").forEach((el) => el.addEventListener("input", queueBuild));
+  bPhoto.addEventListener("change", () => {
+    const f = bPhoto.files?.[0];
+    if (!f || !/^image\/(png|jpeg|webp)$/.test(f.type)) { bPhotoImg = null; return queueBuild(); }
+    const url = URL.createObjectURL(f);
+    const im = new Image();
+    im.onload = () => { bPhotoImg = im; queueBuild(); };
+    im.onerror = () => { bPhotoImg = null; URL.revokeObjectURL(url); queueBuild(); };
+    im.src = url;
+  });
+  function downloadBuilt(type: "image/png" | "image/jpeg", ext: string) {
+    bCanvas.toBlob((b) => {
+      if (!b) return;
+      const url = URL.createObjectURL(b);
+      const a = document.createElement("a");
+      a.href = url; a.download = `poster-less.${ext}`;
+      document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+    }, type, 0.92);
+  }
+  bPng.addEventListener("click", () => downloadBuilt("image/png", "png"));
+  bJpg.addEventListener("click", () => downloadBuilt("image/jpeg", "jpg"));
+  gotoBuild.addEventListener("click", () => buildEl.scrollIntoView({ behavior: "smooth", block: "start" }));
+  buildPoster();
+
+  applyBtn.addEventListener("click", apply);
+  toggleBtn.addEventListener("click", () => {
+    if (!touchedUrl) return;
+    showingNew = !showingNew;
+    preview.src = showingNew ? touchedUrl : origSrc;
+    render();
+  });
+  dlPng.addEventListener("click", () => download("image/png", "png"));
+  dlJpg.addEventListener("click", () => download("image/jpeg", "jpg"));
+  new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ["data-lang"] });
+  render();
+</script>
+
+<style>
+  .imgcheck {
+    display: grid;
+    gap: var(--s-5);
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: var(--s-6);
+  }
+  @media (min-width: 52rem) {
+    .imgcheck {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+  .card {
+    background: var(--card);
+    border: var(--hair) solid var(--rule);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.1rem, 3vw, 1.75rem);
+    box-shadow: var(--shadow-e1);
+  }
+  .card h3 {
+    margin: 0;
+    font-size: var(--step-2);
+    letter-spacing: -0.02em;
+    font-weight: 650;
+  }
+  .hint,
+  .fine {
+    margin: 0.4rem 0 0;
+    color: var(--ink-3);
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+  .drop {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 0.45rem;
+    margin-top: var(--s-4);
+    padding: 2.2rem 1rem;
+    border: var(--hair) dashed var(--rule-strong);
+    border-radius: var(--radius);
+    color: var(--ink-2);
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s var(--ease), background 0.15s var(--ease);
+  }
+  .drop:hover,
+  .drop.over,
+  .drop:focus-within {
+    border-color: var(--ink);
+    background: var(--paper);
+  }
+  .drop input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  .drop small {
+    color: var(--ink-3);
+    font-size: var(--step--1);
+  }
+  .or {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: var(--s-4) 0 var(--s-3);
+    color: var(--ink-3);
+    font-size: var(--step--1);
+  }
+  .or::before,
+  .or::after {
+    content: "";
+    flex: 1;
+    border-top: var(--hair) solid var(--rule);
+  }
+  .samples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+  .samples button,
+  .btn {
+    appearance: none;
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 560;
+    padding: 0.6rem 0.9rem;
+    border: var(--hair) solid transparent;
+    border-radius: var(--radius);
+    background: var(--paper-2);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+  }
+  .samples button:hover {
+    border-color: var(--rule-strong);
+  }
+  .btn {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn.ghost {
+    background: none;
+    color: var(--ink-2);
+    border-color: var(--rule-strong);
+  }
+  .btn:hover {
+    opacity: 0.9;
+  }
+  .empty {
+    display: grid;
+    place-items: center;
+    min-height: 16rem;
+    margin-top: var(--s-4);
+    border: var(--hair) dashed var(--rule);
+    border-radius: var(--radius);
+    color: var(--ink-3);
+    text-align: center;
+    padding: 1rem;
+  }
+  .empty[hidden],
+  .result[hidden],
+  .todo[hidden] {
+    display: none;
+  }
+  .result {
+    margin-top: var(--s-4);
+  }
+  .result img {
+    display: block;
+    max-width: 100%;
+    max-height: 15rem;
+    margin-inline: auto;
+    object-fit: contain;
+    border: var(--hair) solid var(--rule);
+    border-radius: var(--radius);
+  }
+  .verdict {
+    margin: var(--s-4) 0 0;
+    font-size: var(--step-2);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+  .count {
+    margin: 0.15rem 0 0;
+    color: var(--ink-3);
+    font-size: var(--step--1);
+  }
+  .signals,
+  .todo ul {
+    list-style: none;
+    margin: var(--s-3) 0 0;
+    padding: 0;
+  }
+  .signals :global(li) {
+    display: grid;
+    grid-template-columns: 0.7rem 7.5rem minmax(0, 1fr);
+    gap: 0.6rem;
+    align-items: baseline;
+    padding-block: 0.55rem;
+    border-top: var(--hair) solid var(--rule);
+    font-size: var(--step--1);
+    line-height: 1.45;
+  }
+  @media (max-width: 34rem) {
+    .signals :global(li) {
+      grid-template-columns: 0.7rem minmax(0, 1fr);
+    }
+    .signals :global(li span) {
+      grid-column: 2;
+    }
+  }
+  .signals :global(i) {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    border: var(--hair) solid var(--rule-strong);
+  }
+  .signals :global(li.flag i) {
+    background: var(--slop);
+    border-color: var(--slop);
+  }
+  .signals :global(b) {
+    font-weight: 600;
+  }
+  .signals :global(li.ok span) {
+    color: var(--ink-3);
+  }
+  .todo h4 {
+    margin: var(--s-4) 0 0;
+    font-size: var(--step--1);
+    font-weight: 650;
+  }
+  .todo :global(li) {
+    padding-block: 0.4rem;
+    border-top: var(--hair) solid var(--rule);
+    font-size: var(--step--1);
+    line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .build {
+    grid-column: 1 / -1;
+  }
+  .bgrid {
+    display: grid;
+    gap: var(--s-5);
+    margin-top: var(--s-4);
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 52rem) {
+    .bgrid {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+      align-items: start;
+    }
+  }
+  .bform {
+    display: grid;
+    gap: var(--s-3);
+    align-content: start;
+  }
+  .fld {
+    display: grid;
+    gap: 0.3rem;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .fld input[type="text"] {
+    font: inherit;
+    font-size: var(--step-0);
+    padding: 0.55rem 0.7rem;
+    border: var(--hair) solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .fld input[type="file"] {
+    font: inherit;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .opt {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .opt legend {
+    float: left;
+    margin-right: 0.8rem;
+    padding: 0;
+  }
+  .sw input,
+  .pill input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .sw {
+    position: relative;
+    cursor: pointer;
+  }
+  .sw i {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    outline: var(--hair) solid transparent;
+    outline-offset: 2px;
+  }
+  .sw input:checked + i {
+    outline-color: var(--ink);
+  }
+  .sw input:focus-visible + i,
+  .pill input:focus-visible + span {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+  .pill {
+    position: relative;
+    cursor: pointer;
+  }
+  .pill span {
+    display: block;
+    padding: 0.3rem 0.8rem;
+    border: var(--hair) solid var(--rule-strong);
+    border-radius: 999px;
+  }
+  .pill input:checked + span {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .check input {
+    accent-color: var(--ink);
+  }
+  .bprev canvas {
+    display: block;
+    width: 100%;
+    max-width: 26rem;
+    height: auto;
+    margin-inline: auto;
+    border: var(--hair) solid var(--rule);
+    border-radius: var(--radius);
+  }
+  .touch {
+    margin-top: var(--s-5);
+    padding-top: var(--s-4);
+    border-top: var(--hair) solid var(--rule);
+  }
+  .touch h4 {
+    margin: 0;
+    font-size: var(--step-1);
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+  .strength {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: var(--s-3);
+    font-size: var(--step--1);
+    color: var(--ink-2);
+  }
+  .strength input {
+    flex: 1;
+    max-width: 14rem;
+    accent-color: var(--ink);
+  }
+  .after[hidden] {
+    display: none;
+  }
+  .after {
+    margin-top: var(--s-4);
+  }
+  .verdict.small {
+    margin-top: 0;
+    font-size: var(--step-1);
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: var(--s-4);
+  }
+</style>

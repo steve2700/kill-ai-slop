@@ -15,7 +15,9 @@ description: >-
   over every heading, flat type
   hierarchies, invented stat rows, 01/02/03 section
   markers, cards nested in cards, the default Inter/Space Grotesk look, and
-  more. Works on HTML/CSS, React/Vue/Svelte/Astro, Tailwind, PHP, and Markdown
+  the tells of AI-generated posters and images (torn-paint banners,
+  glow-and-reflection, mismatched fonts, icon-circle rows, airbrushed finish,
+  no quiet space, dead-centre symmetry). Works on HTML/CSS, React/Vue/Svelte/Astro, Tailwind, PHP, and Markdown
   copy.
 ---
 
@@ -91,6 +93,13 @@ slop  copy.md:1         "not just X — it's Y"         → say the specific thi
 
 Then ask which groups to apply, or whether to proceed on all.
 
+### 4b. Review images
+The scanner cannot see pixels. If the project has generated or AI-looking
+images (or the user shares a poster, flyer, hero or ad), follow
+`references/imagery.md`: look at the image, score it against tells 36–42,
+judge its finish (texture, empty space, axis, light), and report before
+rebuilding anything.
+
 ### 5. Fix
 Apply the minimal change that removes the tell while preserving intent and
 function. Use `references/fixes.md` for the before→after pattern per tell.
@@ -115,7 +124,8 @@ function. Use `references/fixes.md` for the before→after pattern per tell.
 
 ## References
 
-- `references/taxonomy.md` — the 35 tells: what each is, why it's slop, the fix.
+- `references/taxonomy.md` — the 42 tells: what each is, why it's slop, the fix.
+- `references/imagery.md` — visual review of posters, banners and generated images.
 - `references/detection.md` — concrete ripgrep/regex patterns + false positives.
 - `references/fixes.md` — before→after remediation patterns.
 - `scripts/scan.mjs` — the dependency-free scanner.

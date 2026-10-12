@@ -2,7 +2,7 @@
 
 Scan a web project for **AI slop**, the generic machine-default visual and copy
 tics of vibe-coded products, and strip it out. This skill turns the catalogue at
-**[killaislop.com](https://killaislop.com)** into action: it detects 35 tells
+**[killaislop.com](https://killaislop.com)** into action: it detects 42 tells
 from their code-level signals, explains why each reads as machine-made, and
 proposes or applies the clean fix.
 
@@ -106,7 +106,8 @@ language- or stack-specific rules.
 | File | |
 |---|---|
 | `SKILL.md` | The skill definition, workflow, and guardrails. |
-| `references/taxonomy.md` | The 35 tells: what each is, why it's slop, the fix. |
+| `references/taxonomy.md` | The 42 tells: what each is, why it's slop, the fix. |
+| `references/imagery.md` | Visual review for posters, banners and generated images. |
 | `references/detection.md` | The code patterns per tell, and their false positives. |
 | `references/fixes.md` | Before→after remediation patterns. |
 | `scripts/scan.mjs` | The dependency-free scanner. |

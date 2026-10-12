@@ -1,6 +1,6 @@
 # The AI-slop taxonomy
 
-35 tells, in two tiers. **Classic** = widely recognised. **Evolved** = newer
+42 tells, in two tiers and an imagery group. **Classic** = widely recognised. **Evolved** = newer
 defaults that already read as templated. For each: what it is, why it reads as
 machine-made, and the fix. Detection patterns live in `detection.md`; code
 patches in `fixes.md`.
@@ -341,3 +341,44 @@ with tabular lining numerals, hierarchy from scale and space. Display serif
 belongs to genuinely editorial surfaces (docs, essays, a magazine). For
 warmth, one material decision — a paper tint or an ink accent — not the full
 costume.
+
+## Imagery & posters
+
+Visual tells in generated posters, banners and graphics. The scanner can
+only catch their code-level traces; see `imagery.md` for the image review.
+
+**36 · The torn-paint banner** — a red brush-splash block behind the offer and
+the phone number. Ask a model for "bold" and it returns this shape, reused in
+two places, so it is a default. It puts the most important text on the loudest
+background.
+*Fix:* a solid bar or none; emphasis from size and position.
+
+**37 · Glow, gloss and reflection everywhere** — black ground, saturated red, a
+halo behind the product, a mirror floor, gradients and shadows on top. Every
+corner polished equally, so nowhere is the focus.
+*Fix:* one calm ground, one accent, one contact shadow.
+
+**38 · The three-typeface pile-up** — condensed heavy logo, slanted italic
+slogan, brush-script sign-off. Each block generated alone, none agrees.
+*Fix:* one family, two or three weights.
+
+**39 · The row of identical icon circles** — five same-size circles with a
+shield, tag, truck, headset and ribbon over stock phrases. A default trust
+strip any shop could paste.
+*Fix:* one or two specific promises (warranty length, delivery days) as text.
+
+**40 · The airbrushed finish** — surfaces with no noise at all and gradients
+that look untouched: no paper, no print slip, no wear. Real things leave marks;
+a generated image wipes them and finishes every pixel equally.
+*Fix:* put the texture back (print and rescan, real paper grain, colour layers
+slightly off); flat colour instead of gradients.
+
+**41 · No quiet space** — every corner filled with slogans, icons, badges and
+rules. Empty space is how a designer says what matters; a model fills every gap,
+so everything is equally loud and nothing is read first.
+*Fix:* remove a third of the elements; leave one large area empty.
+
+**42 · Dead-centre symmetry** — headline, product and tagline on one axis, left
+and right near-mirrors. The safest default: never wrong, never a position.
+*Fix:* move the main element off the axis and balance it with space, not a
+matching partner.

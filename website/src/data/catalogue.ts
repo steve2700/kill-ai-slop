@@ -12,7 +12,7 @@
   screenshots of the reference product; those were removed in favour of demos.)
 */
 
-export type Group = "color" | "type" | "copy" | "component" | "motion" | "layout" | "evolved";
+export type Group = "color" | "type" | "copy" | "component" | "motion" | "layout" | "evolved" | "imagery";
 
 // Localized string. English is the source of truth and always present; the
 // other languages are optional and fall back to English at the <T> layer.
@@ -45,6 +45,7 @@ export const GROUPS: Record<Group, Bi> = {
   motion: { en: "Motion", zh: "动效", ja: "モーション", ko: "모션" },
   layout: { en: "Layout", zh: "版式", ja: "レイアウト", ko: "레이아웃" },
   evolved: { en: "Evolved slop", zh: "进化型 slop", ja: "進化型 slop", ko: "진화형 slop" },
+  imagery: { en: "Imagery & posters", zh: "图像与海报", ja: "画像・ポスター", ko: "이미지·포스터" },
 };
 
 // Entries are numbered by position (see the map below), so inserting a case
@@ -798,6 +799,179 @@ const rawEntries: Omit<Entry, "n">[] = [
       "cream bg + tracked-caps kicker + display serif",
     ],
     demo: "editorial-dashboard",
+  },
+  // ── Imagery & posters ─────────────────────────────────────────────────────
+  // Appended after the original 35 so existing ids/numbers (and the scanner's
+  // tell numbers) stay stable. Source specimen: a generated phone-shop poster.
+  {
+    id: "torn-paint-banner",
+    tier: 1,
+    group: "imagery",
+    title: { zh: "撕裂笔刷横幅", en: "The torn-paint banner" },
+    what: {
+      zh: "在促销语和电话号码底下垫一块红色的「泼漆」撕边色块。",
+      en: "A red torn-brush splash slapped behind the promo line and the phone number.",
+    },
+    why: {
+      zh: "图像模型一听到「大胆、有力」，就把这块撕边笔刷色块端上来。同一个形状会同时出现在促销角标和联系方式上：它不是设计师选的，是默认值。它还让最需要读清的两样东西——优惠和号码——站在最吵的背景上。",
+      en: "Ask an image model for ‘bold’ and it returns this shape. The same torn splash shows up behind the offer and behind the contact line, so it is a default, not a choice. It also puts the two things that most need to be read, the offer and the number, on the loudest background in the piece.",
+    },
+    fix: {
+      zh: "用一条实色矩形，或者干脆不要底色。强调靠字号和位置，不靠背景特效。整张海报最多留一个有形状的色块。",
+      en: "Use a plain solid bar, or no bar at all. Emphasis comes from size and position, not a background effect. Keep at most one shaped block on the whole sheet.",
+    },
+    detect: [
+      "clip-path: polygon( …12+ points… )",
+      "brush-stroke / paint-splash / torn-edge asset names",
+      "mask-image: url(…brush…)",
+    ],
+    demo: "torn-paint-banner",
+  },
+  {
+    id: "glow-and-gloss",
+    tier: 1,
+    group: "imagery",
+    title: { zh: "处处发光、处处反光", en: "Glow, gloss and reflection everywhere" },
+    what: {
+      zh: "黑底、饱和红、产品背后一团红色光晕，脚下一层镜面倒影，再加上到处都是的渐变和投影。",
+      en: "Black ground, saturated red, a red halo behind the product, a mirror floor under it, and gradients and shadows on top of that.",
+    },
+    why: {
+      zh: "每个角落都被打磨到同一个精致度，所以没有哪里是重点。人类设计师会决定哪里发光、哪里安静；模型把所有特效一次全开。黑加饱和红加辉光，是它对「科技感」的标准翻译。",
+      en: "Every corner is polished to the same level, so nowhere is the focus. A designer decides where the light goes and where it stays quiet; the model switches every effect on at once. Black plus saturated red plus glow is its stock translation of ‘techy’.",
+    },
+    fix: {
+      zh: "选一个平静的底色，一个强调色。只让一样东西突出，其余留白。深度靠一条细线或一道贴地的接触阴影，不靠光晕和倒影。",
+      en: "Pick one calm ground and one accent. Let one thing stand out and leave the rest quiet. Get depth from a hairline or a single contact shadow, not a halo and a reflection.",
+    },
+    detect: [
+      "-webkit-box-reflect",
+      "box-shadow / text-shadow: 0 0 40px <saturated colour>",
+      "filter: drop-shadow( 0 0 … )",
+      "radial-gradient behind a hero product",
+    ],
+    demo: "glow-and-gloss",
+  },
+  {
+    id: "font-pileup",
+    tier: 1,
+    group: "imagery",
+    title: { zh: "三种字体打架", en: "The three-typeface pile-up" },
+    what: {
+      zh: "超窄粗体做标志，斜体做口号，手写体做「Stay Connected」，同一张海报里互相较劲。",
+      en: "A condensed heavy for the logo, a slanted italic for the slogan, and a brush script for the sign-off, all competing on one sheet.",
+    },
+    why: {
+      zh: "每个文字块都是单独生成的，各自想显得有个性，没人负责让它们彼此配合。结果是三个声音在同一句话里吵架，读者找不到该先读哪个。",
+      en: "Each text block was generated on its own and each tries to look distinctive; nobody makes them agree. Three voices argue in one sheet, and the reader cannot tell which to read first.",
+    },
+    fix: {
+      zh: "一个字体家族，两三种字重。标题用粗，正文用常规，仅此而已。想要个性，就在一个地方做一个选择。",
+      en: "One type family, two or three weights. Heavy for the headline, regular for the rest. If you want character, spend it in one place.",
+    },
+    detect: [
+      "3+ families in one Google Fonts <link>",
+      "font-family: Bebas Neue / Anton / Oswald / Permanent Marker / Pacifico",
+      "italic + script + condensed on one layout",
+    ],
+    demo: "font-pileup",
+  },
+  {
+    id: "icon-circle-row",
+    tier: 1,
+    group: "imagery",
+    title: { zh: "五个一模一样的图标圆", en: "The row of identical icon circles" },
+    what: {
+      zh: "一排五个红圆圈，里面分别是盾牌、价签、卡车、耳机、奖章，底下配一句套话。",
+      en: "Five identical red circles holding a shield, a tag, a truck, a headset and a ribbon, each over a stock phrase.",
+    },
+    why: {
+      zh: "这是「信任条」的默认版本：五个承诺，五个图标，谁家都能贴。「正品」「价格有竞争力」「友好支持」没有一条是具体的，图标只是把空话画了一遍。",
+      en: "It is the default trust strip: five promises, five icons, pasteable onto any shop. ‘Genuine’, ‘competitive’ and ‘friendly’ say nothing specific; the icons just draw the empty words.",
+    },
+    fix: {
+      zh: "只保留你真的能兑现的那一两条，而且要具体：保修多久、几天送到。写成一行字，不需要图标圆。",
+      en: "Keep the one or two promises you can actually keep, and make them specific: how long the warranty is, how many days delivery takes. Set them as a line of text; no icon circles.",
+    },
+    detect: [
+      "five sibling icons in rounded-full bg-red-500/600",
+      "‘Genuine Products’ / ‘Competitive Prices’ / ‘Friendly Support’",
+      "‘Fast & Safe Delivery’ / ‘Warranty Options’",
+    ],
+    demo: "icon-circle-row",
+  },
+  {
+    id: "airbrushed-finish",
+    tier: 1,
+    group: "imagery",
+    title: { zh: "喷枪般的光滑表面", en: "The airbrushed finish" },
+    what: {
+      zh: "平面干净到没有一粒噪点，渐变平滑得像从来没被摸过：没有颗粒、纸纹、套印偏差，也没有任何磨损。",
+      en: "Surfaces so clean there is not one grain of noise, and gradients so smooth they look untouched: no paper, no print slip, no wear.",
+    },
+    why: {
+      zh: "真实的东西总会留下痕迹：纸的纤维、油墨的边缘、相机的噪点。生成图把这些全抹掉了，每个像素都被处理到同样的完美程度。眼睛读到的是「没人碰过」，而不是「有人做过」。",
+      en: "Real things leave marks: paper fibre, ink edges, sensor noise. A generated image wipes all of it, and every pixel is finished to the same perfect level. The eye reads ‘nobody touched this’ instead of ‘someone made this’.",
+    },
+    fix: {
+      zh: "把质感放回去：打印后重新扫描或拍照，叠一层真实的纸张颗粒，让颜色版稍有错位。平面用纯色，不用渐变。",
+      en: "Put the texture back: print it and rescan or photograph it, lay real paper grain over it, let the colour layers sit a little off. Use flat colour in place of gradients.",
+    },
+    detect: [
+      "ChatGPT Image / Gemini_Generated_Image / midjourney / dall-e in file names",
+      "flat areas with no noise at all (the image check reads this)",
+      "large gradient ramps with no texture",
+    ],
+    demo: "airbrushed-finish",
+  },
+  {
+    id: "no-quiet-space",
+    tier: 1,
+    group: "imagery",
+    title: { zh: "没有留白", en: "No quiet space" },
+    what: {
+      zh: "每个角落都塞满了东西：标语、图标、徽章、产品、装饰线，没有一块地方是空的。",
+      en: "Every corner is filled: slogans, icons, badges, products, rules. Not one area is left empty.",
+    },
+    why: {
+      zh: "人类设计师靠空白决定重点：空的地方让眼睛休息，也告诉你哪里才重要。模型怕留空，把每个空位都补满，于是所有东西一样吵，没有哪个是第一眼。",
+      en: "A designer uses empty space to say what matters: it lets the eye rest and shows where to look. The model is afraid of a gap and fills every one, so everything is equally loud and nothing is read first.",
+    },
+    fix: {
+      zh: "删掉三分之一的元素，留出一大块完整的空白。把剩下的东西按重要性排出第一眼、第二眼。",
+      en: "Remove a third of the elements and leave one large area completely empty. Rank what is left: first read, second read.",
+    },
+    detect: [
+      "few or no calm regions (the image check reads this)",
+      "five or more badges or icons in one view",
+      "more than one message on the sheet: several slogans, claims or contact lines",
+      "every region carries detail at the same level",
+    ],
+    demo: "no-quiet-space",
+  },
+  {
+    id: "dead-centre-symmetry",
+    tier: 1,
+    group: "imagery",
+    title: { zh: "正中对称", en: "Dead-centre symmetry" },
+    what: {
+      zh: "标题、产品、口号都落在同一条中轴线上，左右几乎互为镜像，像模板一样整齐。",
+      en: "Headline, product and tagline all sit on one centre axis, left and right near-mirrors of each other, tidy as a template.",
+    },
+    why: {
+      zh: "居中对称是最安全的默认：永远不会错，也永远没有立场。人做版面会偏、会失衡、再用留白找回平衡。镜像式的平衡读起来像算出来的，而不是看出来的。",
+      en: "Centred symmetry is the safest default: never wrong, never a position. A person lets a layout lean, then rebalances it with space. Mirror balance reads as computed, not seen.",
+    },
+    fix: {
+      zh: "把主角移出中轴线，靠一边，用留白去平衡，而不是用一个对称的配角。左对齐的标题通常更自然。",
+      en: "Move the main element off the axis and balance it with space, not a matching partner on the other side. A left-aligned headline usually reads more natural.",
+    },
+    detect: [
+      "text-align: center on every block of a layout",
+      "left and right halves that mirror each other (the image check reads this)",
+      "single flex or grid centre axis for the whole composition",
+    ],
+    demo: "dead-centre-symmetry",
   },
 ];
 

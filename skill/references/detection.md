@@ -409,3 +409,49 @@ rg -n -i 'oldstyle-nums|font-variant-numeric:\s*oldstyle'
 not on genuinely editorial content; the greeting-as-headline sits on an
 operational surface; the cream + tracked-caps kicker + deep accent kit came
 as a set. A docs site or essay page in a text serif is not this tell.
+
+### 36 The torn-paint banner
+```
+rg -n -i 'clip-path:\s*polygon\((?:[^)]*,){11,}'
+rg -n -i '(brush|paint)[-_ ]?(stroke|splash|swipe|splatter)|torn[-_ ]?(paper|edge)|grunge[-_ ]?(banner|stroke)'
+```
+*Confirm:* the shape sits behind an offer or contact line. A hand-drawn brand
+stroke used once is a choice, not this tell.
+
+### 37 Glow, gloss and reflection
+```
+rg -n -i -- '-webkit-box-reflect'
+rg -n -i '(box|text)-shadow:[^;{}]*\b0\s+0\s+([3-9]\d|\d{3})px'
+rg -n -i 'drop-shadow\(\s*0\s+0\s+\d{2,}px'
+```
+*Confirm:* the glow is decorative and appears on several elements. One focus
+ring or one subtle shadow is fine.
+
+### 38 The three-typeface pile-up
+```
+rg -n -i 'fonts\.googleapis\.com/css2?\?(?:[^"\x27\s>]*?family=[^&"\x27\s>]*&){2,}'
+rg -n -i "font-family:\s*['\"]?(Bebas Neue|Anton|Oswald|Permanent Marker|Pacifico|Lobster|Bangers)"
+```
+*Confirm:* the families appear on one layout and are not a deliberate
+display/text pairing.
+
+### 39 The row of identical icon circles
+```
+rg -n -i 'rounded-full[^"\x27\n]{0,80}bg-(red|rose)-[56]00'
+rg -n -i '(trust|benefit|feature)[-_ ]?(strip|badges?|icons?)\b'
+```
+*Confirm:* four or more siblings, same size and colour, each over a generic
+phrase.
+
+### 40 The airbrushed finish
+```
+rg -n -i 'chatgpt[-_ ]image|gemini[-_]generated|dall[-_·]?e|midjourney|ideogram|firefly[-_]'
+```
+*Confirm:* the file is the shipped asset, then judge it by eye (see
+`imagery.md`): is there any grain, paper or print imperfection? A file name
+proves nothing about quality; a missing name proves nothing either.
+
+### 41 No quiet space and 42 Dead-centre symmetry
+No reliable code signal. Judge from the image: is there one large empty area,
+and is there a first read? Does everything sit on one centre axis? In code, a
+`text-align: center` on every block of a layout is a hint only.

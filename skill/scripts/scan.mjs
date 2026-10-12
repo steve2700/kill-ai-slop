@@ -282,6 +282,41 @@ const TELLS = [
       /font-family:\s*[^;]*(?:fraunces|canela|tiempos|didot|freight|reckless|newsreader)/i,
       /oldstyle-nums|font-variant-numeric:\s*oldstyle/i,
     ] },
+  // ── Imagery & posters (36–42) ───────────────────────────────────────────
+  // Pixels can't be grepped, so these catch the code that recreates the look
+  // (torn clip-paths, glow stacks, poster fonts), the stock poster copy, and
+  // the file names generators leave behind. Visual review of the images
+  // themselves is a manual step: see references/imagery.md.
+  { id: "36", group: "imagery", name: "torn-paint banner", fix: "plain solid bar, or none",
+    patterns: [
+      /clip-path:\s*polygon\((?:[^)]*,){11,}/i,
+      /(?:brush|paint)[-_ ]?(?:stroke|splash|swipe|splatter)|torn[-_ ]?(?:paper|edge)|grunge[-_ ]?(?:banner|stroke)/i,
+      /mask-image:\s*url\([^)]*(?:brush|splash|torn|grunge)/i,
+    ] },
+  { id: "37", group: "imagery", name: "glow, gloss and reflection", fix: "one calm ground, one contact shadow",
+    patterns: [
+      /-webkit-box-reflect/i,
+      /(?:box|text)-shadow:[^;{}]*\b0\s+0\s+(?:[3-9]\d|\d{3})px/i,
+      /drop-shadow\(\s*0\s+0\s+\d{2,}px/i,
+    ] },
+  { id: "38", group: "imagery", name: "three-typeface pile-up", fix: "one family, two or three weights",
+    patterns: [
+      /fonts\.googleapis\.com\/css2?\?(?:[^"'\s>]*?family=[^&"'\s>]*&){2,}[^"'\s>]*?family=/i,
+      /font-family:\s*['"]?(?:Bebas Neue|Anton|Oswald|Permanent Marker|Pacifico|Lobster|Bangers|Righteous)/i,
+      /font-family:\s*['"]?(?:Brush Script|Segoe Script|Snell Roundhand)/i,
+    ] },
+  { id: "39", group: "imagery", name: "row of identical icon circles", fix: "one or two specific promises, as text",
+    patterns: [
+      /rounded-full[^"'\n]{0,80}bg-(?:red|rose)-[56]00|bg-(?:red|rose)-[56]00[^"'\n]{0,80}rounded-full/i,
+      /(?:trust|benefit|feature)[-_ ]?(?:strip|badges?|icons?)\b/i,
+    ] },
+  { id: "40", group: "imagery", name: "airbrushed finish (generated-image file names)", fix: "add real texture, or photograph the real thing; disclose generated images", copy: true,
+    patterns: [
+      /chatgpt[-_ ]image|gemini[-_]generated|dall[-_·]?e|midjourney|ideogram|firefly[-_]|\bimage[-_]?gen\b/i,
+      /ai[-_ ]generated[-_ ]?(?:image|photo|poster)/i,
+    ] },
+  // 41 (no quiet space) and 42 (dead-centre symmetry) have no reliable code
+  // signal; they are judged from the image. See references/imagery.md.
 ];
 
 // Extra rule modules (--rules=file.mjs): each exports an array of tells shaped

@@ -366,3 +366,45 @@ serif display only where the surface is genuinely editorial.
 + </header>
 + <div class="stat text-3xl font-bold tabular-nums">3</div>
 ```
+
+### 36 The torn-paint banner
+```diff
+- <div class="splash"><b>NEW & PRE-OWNED</b></div>   /* clip-path: polygon(…) */
++ <p class="offer">New and pre-owned phones</p>       /* ink on paper */
+```
+
+### 37 Glow, gloss and reflection
+```diff
+- .hero { box-shadow: 0 0 60px red; -webkit-box-reflect: below 2px; background: radial-gradient(...); }
++ .hero { background: var(--paper); box-shadow: 0 1px 2px rgb(0 0 0 / .12); }
+```
+
+### 38 The three-typeface pile-up
+```diff
+- family=Bebas+Neue&family=Pacifico&family=Inter
++ one family, weights 400 and 700 only
+```
+
+### 39 The row of identical icon circles
+```diff
+- <div class="icons"> …five <i class="rounded-full bg-red-600"> + stock phrases… </div>
++ <p>12-month warranty · Delivered in 2 days · Pay on collection</p>
+```
+
+### 40 The airbrushed finish
+Put the texture back. Print and rescan or photograph it, lay real paper grain
+over flat areas, let colour layers sit slightly off, and use flat colour in
+place of gradients. Rename any generated file you keep, and disclose it where
+required.
+
+### 41 No quiet space
+Remove a third of the elements, leave one large area empty, and rank what is
+left: first read, second read.
+
+### 42 Dead-centre symmetry
+```diff
+- .hero { text-align: center; }          /* everything on one axis */
++ .hero { text-align: left; }            /* headline off-axis, space on the right */
+```
+Move the main element off the axis and balance it with space, not a matching
+partner on the other side.

@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import T from "../components/T.astro";
 import SlopEntry from "../components/SlopEntry.astro";
 import Toc from "../components/Toc.astro";
+import ImageCheck from "../components/ImageCheck.astro";
 import { catalogue } from "../data/catalogue";
 
 // Derive the count so the catalogue heading tracks the data — never hardcode it.
@@ -156,6 +157,23 @@ const principles = [
           />
         </p>
       </div>
+    </div>
+  </section>
+
+  {/* ── Test an image ────────────────────────────────────────────────── */}
+  <section class="section" id="test">
+    <div class="container">
+      <p class="eyebrow" data-index="00" data-reveal><T zh="试一试" en="Try it" ja="試してみる" ko="해보기" /></p>
+      <h2 data-reveal><T zh="测一张图，看它有多「完美」" en="Test an image for too-perfect polish" ja="画像を試して、磨かれすぎを確かめる" ko="이미지를 올려 너무 매끈한지 확인한다" /></h2>
+      <p class="lede" data-reveal>
+        <T
+          zh="AI 生成的海报和图片往往完美过头，失去人的手感。上传一张图，看哪些信号让它读起来像机器做的。"
+          en="Generated posters and images are often too perfect, with no human touch left. Upload one and see which signals make it read as machine-made."
+          ja="生成されたポスターや画像は完璧すぎて、人の手触りが消えていることが多い。画像を上げて、どのサインが機械的に見せているかを確かめる。"
+          ko="생성된 포스터와 이미지는 지나치게 완벽해서 사람 손맛이 사라진 경우가 많다. 이미지를 올려 어떤 신호가 기계가 만든 것처럼 보이게 하는지 확인한다."
+        />
+      </p>
+      <ImageCheck />
     </div>
   </section>
 

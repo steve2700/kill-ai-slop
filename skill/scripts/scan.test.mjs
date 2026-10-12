@@ -200,3 +200,20 @@ test("escapes control characters in human output", () => {
     assert.doesNotThrow(() => JSON.parse(jsonResult.stdout));
   });
 });
+
+test("detects imagery and poster tells (36-40)", () => {
+  withTempProject((project) => {
+    writeFileSync(
+      join(project, "poster.html"),
+      `<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&family=Inter" rel="stylesheet">\n` +
+        `<style>.s{clip-path:polygon(0 1%,1% 2%,2% 3%,3% 4%,4% 5%,5% 6%,6% 7%,7% 8%,8% 9%,9% 10%,10% 11%,11% 12%,12% 13%)}\n` +
+        `.h{box-shadow:0 0 60px red;-webkit-box-reflect:below 2px}</style>\n` +
+        `<img src="/img/ChatGPT Image Oct 1.png"><p>Top Brands | Great Prices | Trusted Service</p>\n` +
+        `<i class="rounded-full bg-red-600"></i>\n`,
+    );
+    const report = reportFor(project);
+    for (const id of ["36", "37", "38", "39", "40"]) {
+      assert.ok(finding(report, id), `expected tell ${id} to be detected`);
+    }
+  });
+});

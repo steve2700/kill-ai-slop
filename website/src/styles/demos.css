@@ -2011,3 +2011,129 @@
   font-weight: 680;
   color: var(--ink);
 }
+
+/* ── Imagery & posters ───────────────────────────────────────────────────── */
+.demo-torn-paint-banner .scene,
+.demo-glow-and-gloss .scene,
+.demo-font-pileup .scene,
+.demo-icon-circle-row .scene {
+  width: 100%;
+  max-width: 24rem;
+  margin-inline: auto;
+}
+.demo-torn-paint-banner .slop,
+.demo-glow-and-gloss .slop,
+.demo-font-pileup .slop,
+.demo-icon-circle-row .slop {
+  background: #0b0b0d;
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 1.4rem 1.2rem;
+}
+.demo-torn-paint-banner .clean,
+.demo-glow-and-gloss .clean,
+.demo-font-pileup .clean,
+.demo-icon-circle-row .clean {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.2rem;
+  color: var(--ink);
+}
+.demo-torn-paint-banner p,
+.demo-glow-and-gloss p,
+.demo-font-pileup p,
+.demo-icon-circle-row p { margin: 0; }
+
+/* torn-paint-banner */
+.demo-torn-paint-banner .splash {
+  background: #e3120b;
+  color: #fff;
+  padding: 1.1rem 1.6rem;
+  rotate: -3deg;
+  text-align: center;
+  clip-path: polygon(0 18%, 4% 6%, 9% 14%, 15% 2%, 24% 10%, 33% 0, 44% 9%, 56% 2%, 68% 11%, 79% 1%, 90% 9%, 97% 3%, 100% 20%, 96% 36%, 100% 52%, 95% 68%, 100% 84%, 94% 100%, 84% 92%, 72% 100%, 60% 91%, 47% 99%, 35% 90%, 22% 100%, 11% 92%, 3% 99%, 0 82%, 4% 66%, 0 48%, 5% 32%);
+}
+.demo-torn-paint-banner .splash b { display: block; font-size: 1.15rem; font-style: italic; font-weight: 900; text-transform: uppercase; letter-spacing: 0.02em; }
+.demo-torn-paint-banner .splash span { display: block; font-size: 0.7rem; font-style: italic; font-weight: 700; text-transform: uppercase; }
+.demo-torn-paint-banner .splash.call { margin-top: 0.9rem; rotate: 2deg; }
+.demo-torn-paint-banner .splash.call b { font-size: 1.5rem; }
+.demo-torn-paint-banner .clean .offer b { display: block; font-size: var(--step-2); font-weight: 650; letter-spacing: -0.02em; line-height: 1.15; }
+.demo-torn-paint-banner .clean .offer span { display: block; margin-top: 0.3rem; font-size: var(--step--1); color: var(--ink-2); }
+.demo-torn-paint-banner .clean .call { margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid var(--rule); }
+.demo-torn-paint-banner .clean .call b { font-size: var(--step-3); font-weight: 680; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+
+/* glow-and-gloss */
+.demo-glow-and-gloss .slop { position: relative; display: grid; place-items: center; height: 11.5rem; overflow: hidden; }
+.demo-glow-and-gloss .halo { position: absolute; width: 14rem; height: 8rem; top: 1rem; background: radial-gradient(closest-side, rgba(255, 30, 20, 0.85), rgba(255, 30, 20, 0)); }
+.demo-glow-and-gloss .phone { position: relative; width: 3.6rem; height: 7rem; border-radius: 0.8rem; background: linear-gradient(160deg, #3a3a42, #121216); border: 1px solid #5a5a64; box-shadow: 0 0 24px rgba(255, 60, 40, 0.55); }
+.demo-glow-and-gloss .phone i { position: absolute; inset: 0.3rem; border-radius: 0.55rem; background: linear-gradient(180deg, #7a3cff, #0a0a24 70%); }
+.demo-glow-and-gloss .slop .phone { margin-top: -1.2rem; }
+.demo-glow-and-gloss .slop .phone.back { position: absolute; left: calc(50% + 2.2rem); top: 1.9rem; opacity: 0.85; rotate: 6deg; }
+.demo-glow-and-gloss .mirror { position: absolute; bottom: 0; left: 0; right: 0; height: 2.8rem; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.14), transparent); }
+.demo-glow-and-gloss .clean { display: grid; place-items: center; height: 11.5rem; }
+.demo-glow-and-gloss .clean .phone { width: 3.6rem; height: 7rem; background: var(--ink); border: 0; box-shadow: none; }
+.demo-glow-and-gloss .clean .phone i { background: var(--paper-2); }
+.demo-glow-and-gloss .clean .contact { width: 4.2rem; height: 0.5rem; margin-top: -0.2rem; border-radius: 50%; background: rgba(20, 21, 26, 0.18); filter: blur(3px); }
+.demo-glow-and-gloss .clean .cap { margin-top: 0.7rem; font-size: var(--step--1); color: var(--ink-2); }
+
+/* font-pileup */
+.demo-font-pileup .logo { font-family: Impact, "Arial Narrow", "Haettenschweiler", sans-serif; font-size: 2.6rem; line-height: 1; text-transform: uppercase; letter-spacing: 0.01em; color: #fff; }
+.demo-font-pileup .slogan { margin-top: 0.7rem; font-style: italic; font-size: 0.95rem; color: #ddd; }
+.demo-font-pileup .script { margin-top: 0.5rem; font-family: "Segoe Script", "Brush Script MT", "Snell Roundhand", cursive; font-size: 1.5rem; color: #ff3b30; }
+.demo-font-pileup .clean .head { font-size: var(--step-4); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.demo-font-pileup .clean .sub { margin-top: 0.45rem; font-size: var(--step-0); color: var(--ink-2); }
+.demo-font-pileup .clean .head + .sub { margin-top: 0.7rem; }
+
+/* icon-circle-row */
+.demo-icon-circle-row .slop .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; }
+.demo-icon-circle-row .it { display: grid; justify-items: center; gap: 0.4rem; text-align: center; }
+.demo-icon-circle-row .it i { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: #e3120b; display: grid; place-items: center; }
+.demo-icon-circle-row .it svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: #fff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.demo-icon-circle-row .it span { font-size: 0.5rem; font-weight: 800; text-transform: uppercase; line-height: 1.25; }
+.demo-icon-circle-row .clean .facts { display: grid; gap: 0; }
+.demo-icon-circle-row .clean .facts b { padding-block: 0.55rem; font-size: var(--step-0); font-weight: 600; border-top: 1px solid var(--rule); }
+.demo-icon-circle-row .clean .facts b:first-child { border-top: 0; padding-top: 0; }
+.demo-icon-circle-row .clean .facts b:last-child { padding-bottom: 0; }
+
+/* airbrushed-finish */
+.demo-airbrushed-finish .scene { width: 100%; max-width: 24rem; margin-inline: auto; }
+.demo-airbrushed-finish .scene { padding: 1.4rem 1.2rem; border-radius: var(--radius); }
+.demo-airbrushed-finish .slop { background: #0b0b0d; }
+.demo-airbrushed-finish .clean { background: var(--card); border: 1px solid var(--rule); }
+.demo-airbrushed-finish .panel { padding: 1.6rem 1.3rem; border-radius: 0.9rem; }
+.demo-airbrushed-finish .panel b { display: block; font-size: var(--step-3); font-weight: 700; letter-spacing: -0.02em; }
+.demo-airbrushed-finish .panel span { display: block; margin-top: 0.35rem; font-size: var(--step--1); }
+.demo-airbrushed-finish .slop .panel { color: #fff; background: linear-gradient(135deg, #8a5cff 0%, #3b1fd6 55%, #12104a 100%); box-shadow: 0 0 34px rgba(138, 92, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
+.demo-airbrushed-finish .clean .panel { color: var(--ink); background-color: #e7dfcf; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 .1 0 0 0 0 .1 0 0 0 0 .1 0 0 0 .32 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); border: 1px solid rgba(20, 21, 26, 0.22); box-shadow: 2px 1px 0 rgba(180, 40, 30, 0.35); }
+
+/* no-quiet-space */
+.demo-no-quiet-space .scene { width: 100%; max-width: 24rem; margin-inline: auto; border-radius: var(--radius); padding: 1rem; }
+.demo-no-quiet-space .slop { background: #0b0b0d; color: #fff; }
+.demo-no-quiet-space .clean { background: var(--card); border: 1px solid var(--rule); color: var(--ink); min-height: 11rem; display: grid; align-items: end; }
+.demo-no-quiet-space .fill { display: grid; gap: 0.45rem; }
+.demo-no-quiet-space .fill .h { font-size: 1.5rem; font-weight: 900; font-style: italic; text-transform: uppercase; color: #ff3b30; }
+.demo-no-quiet-space .fill .tag { justify-self: start; display: inline-block; margin-right: 0.3rem; padding: 0.1rem 0.5rem; border-radius: 999px; background: #e3120b; font-size: 0.6rem; font-style: normal; font-weight: 800; text-transform: uppercase; }
+.demo-no-quiet-space .fill p { margin: 0; font-size: 0.7rem; }
+.demo-no-quiet-space .s1 { font-style: italic; color: #ddd; }
+.demo-no-quiet-space .s2 { font-family: "Segoe Script", "Brush Script MT", cursive; font-size: 1.1rem !important; color: #ff3b30; }
+.demo-no-quiet-space .s3 { letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.5rem !important; color: #aaa; }
+.demo-no-quiet-space .chips { display: flex; gap: 0.4rem; }
+.demo-no-quiet-space .chips i { flex: 1; height: 1.6rem; border-radius: 50%; max-width: 1.6rem; background: #e3120b; }
+.demo-no-quiet-space .bar { padding: 0.35rem; text-align: center; background: #e3120b; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; }
+.demo-no-quiet-space .open b { display: block; font-size: var(--step-2); font-weight: 650; letter-spacing: -0.02em; line-height: 1.15; }
+.demo-no-quiet-space .open span { display: block; margin-top: 0.3rem; font-size: var(--step--1); color: var(--ink-2); }
+
+/* dead-centre-symmetry */
+.demo-dead-centre-symmetry .scene { position: relative; width: 100%; max-width: 24rem; margin-inline: auto; border-radius: var(--radius); padding: 1.4rem 1.2rem; min-height: 11.5rem; }
+.demo-dead-centre-symmetry .slop { background: #0b0b0d; color: #fff; }
+.demo-dead-centre-symmetry .clean { background: var(--card); border: 1px solid var(--rule); color: var(--ink); }
+.demo-dead-centre-symmetry .axis { position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px dashed rgba(255, 255, 255, 0.3); }
+.demo-dead-centre-symmetry .mid { position: relative; display: grid; justify-items: center; gap: 0.7rem; text-align: center; }
+.demo-dead-centre-symmetry .mid b { font-size: 1.8rem; font-weight: 800; }
+.demo-dead-centre-symmetry .mid span { font-size: 0.75rem; color: #ccc; letter-spacing: 0.12em; text-transform: uppercase; }
+.demo-dead-centre-symmetry .two { display: flex; gap: 1.6rem; }
+.demo-dead-centre-symmetry .two i { width: 2.6rem; height: 4rem; border-radius: 0.5rem; background: linear-gradient(160deg, #5a5a64, #1d1d22); border: 1px solid #77778a; }
+.demo-dead-centre-symmetry .lean b { display: block; font-size: var(--step-4); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.demo-dead-centre-symmetry .lean span { display: block; margin-top: 0.5rem; font-size: var(--step--1); color: var(--ink-2); }
+.demo-dead-centre-symmetry .obj { position: absolute; right: 1.6rem; bottom: 1.4rem; width: 3.1rem; height: 5.4rem; border-radius: 0.6rem; background: var(--ink); }

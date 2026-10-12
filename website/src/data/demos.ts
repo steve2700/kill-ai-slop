@@ -624,4 +624,84 @@ export const demos: Record<string, { before: string; after: string }> = {
         </div>
       </div>`,
   },
+
+  /* ── Imagery & posters ────────────────────────────────────────────────────
+     Rebuilt in plain HTML/CSS (never the source image). The shop and the phone
+     models are fictional. The after panes spend the effort on one clear
+     hierarchy rather than on removing everything. */
+  "torn-paint-banner": {
+    before: `<div class="scene slop">
+        <div class="splash"><b>New &amp; pre-owned</b><span>Phones available</span></div>
+        <div class="splash call"><b>012 345 6789</b></div>
+      </div>`,
+    after: `<div class="scene clean">
+        <p class="offer"><b>New and pre&#8209;owned phones</b><span>Trade-ins quoted the same day</span></p>
+        <p class="call"><b>012 345 6789</b></p>
+      </div>`,
+  },
+
+  "glow-and-gloss": {
+    before: `<div class="scene slop">
+        <div class="halo"></div>
+        <div class="phone"><i></i></div>
+        <div class="phone back"><i></i></div>
+        <div class="mirror"></div>
+      </div>`,
+    after: `<div class="scene clean">
+        <div class="phone"><i></i></div>
+        <div class="contact"></div>
+        <p class="cap">One phone, one shadow.</p>
+      </div>`,
+  },
+
+  "font-pileup": {
+    before: `<div class="scene slop">
+        <p class="logo">Phones</p>
+        <p class="slogan">Great prices | Trusted service</p>
+        <p class="script">Stay connected</p>
+      </div>`,
+    after: `<div class="scene clean">
+        <p class="head">Phones</p>
+        <p class="sub">Great prices, trusted service.</p>
+        <p class="sub">Stay connected.</p>
+      </div>`,
+  },
+
+  "icon-circle-row": {
+    before: `<div class="scene slop">
+        <div class="row">
+          <div class="it"><i><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></i><span>Genuine<br>products</span></div>
+          <div class="it"><i><svg viewBox="0 0 24 24"><path d="M3 12l9-9h8v8l-9 9z"/><circle cx="15.5" cy="8.5" r="1"/></svg></i><span>Competitive<br>prices</span></div>
+          <div class="it"><i><svg viewBox="0 0 24 24"><path d="M2 7h12v9H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg></i><span>Fast &amp; safe<br>delivery</span></div>
+          <div class="it"><i><svg viewBox="0 0 24 24"><path d="M5 14v-2a7 7 0 0 1 14 0v2M4 14h3v5H4zM17 14h3v5h-3z"/></svg></i><span>Friendly<br>support</span></div>
+          <div class="it"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M9 13l-2 8 5-3 5 3-2-8"/></svg></i><span>Warranty<br>options</span></div>
+        </div>
+      </div>`,
+    after: `<div class="scene clean">
+        <p class="facts"><b>12-month warranty</b><b>Delivered in 2 days</b><b>Pay on collection</b></p>
+      </div>`,
+  },
+
+  "airbrushed-finish": {
+    before: `<div class="scene slop"><div class="panel"><b>Spring sale</b><span>Every surface smooth, nothing touched.</span></div></div>`,
+    after: `<div class="scene clean"><div class="panel"><b>Spring sale</b><span>Paper grain, ink slightly off.</span></div></div>`,
+  },
+
+  "no-quiet-space": {
+    before: `<div class="scene slop">
+        <div class="fill">
+          <b class="h">Best prices</b><i class="tag">New</i><i class="tag">Hot</i>
+          <p class="s1">Top brands | Great prices | Trusted service</p>
+          <div class="chips"><i></i><i></i><i></i><i></i><i></i></div>
+          <p class="s2">Stay connected</p><div class="bar">Call now</div><p class="s3">Your next one is a click away</p>
+        </div>
+      </div>`,
+    after: `<div class="scene clean"><div class="open"><b>Trade in your old phone.</b><span>Quoted the same day.</span></div></div>`,
+  },
+
+  "dead-centre-symmetry": {
+    before: `<div class="scene slop"><div class="axis"></div>
+        <div class="mid"><b>Phones</b><div class="two"><i></i><i></i></div><span>Buy, sell, upgrade</span></div></div>`,
+    after: `<div class="scene clean"><div class="lean"><b>Phones</b><span>Buy, sell, upgrade</span></div><div class="obj"></div></div>`,
+  },
 };

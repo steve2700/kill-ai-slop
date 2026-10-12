@@ -1,0 +1,118 @@
+---
+/** PWA install control. Hidden until the browser says the app is installable
+ *  (Chrome / Edge / Android fire `beforeinstallprompt`). On iOS Safari there is
+ *  no prompt API, so the button instead reveals the Add-to-Home-Screen steps.
+ *  Already-installed (standalone) visitors never see it. */
+import T from "./T.astro";
+---
+
+<span class="install" data-install hidden>
+  <button
+    class="installbtn"
+    type="button"
+    data-install-btn
+    aria-label="Install app / 安装应用 / アプリをインストール / 앱 설치"
+    title="Install app / 安装应用 / アプリをインストール / 앱 설치"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.6"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15"></path>
+    </svg>
+  </button>
+  <span class="hint" data-install-hint hidden role="status">
+    <T
+      en="Tap Share, then Add to Home Screen."
+      zh="点分享，再选“添加到主屏幕”。"
+      ja="共有をタップし、「ホーム画面に追加」を選ぶ。"
+      ko="공유를 누르고 ‘홈 화면에 추가’를 선택."
+    />
+  </span>
+</span>
+
+<script>
+  const wrap = document.querySelector<HTMLElement>("[data-install]");
+  const btn = document.querySelector<HTMLButtonElement>("[data-install-btn]");
+  const hint = document.querySelector<HTMLElement>("[data-install-hint]");
+  const standalone =
+    matchMedia("(display-mode: standalone)").matches ||
+    (navigator as any).standalone === true;
+
+  if (wrap && btn && !standalone) {
+    let deferred: any = null;
+    const ua = navigator.userAgent;
+    const iOS = /iphone|ipad|ipod/i.test(ua) && !/crios|fxios|edgios/i.test(ua);
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferred = e;
+      wrap.hidden = false;
+    });
+    window.addEventListener("appinstalled", () => {
+      deferred = null;
+      wrap.hidden = true;
+    });
+    if (iOS) wrap.hidden = false;
+
+    btn.addEventListener("click", async () => {
+      if (deferred) {
+        deferred.prompt();
+        await deferred.userChoice.catch(() => {});
+        deferred = null;
+        wrap.hidden = true;
+      } else if (hint) {
+        hint.hidden = !hint.hidden;
+      }
+    });
+  }
+</script>
+
+<style>
+  .install {
+    position: relative;
+    display: inline-flex;
+  }
+  .install[hidden] {
+    display: none;
+  }
+  .installbtn {
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 0;
+    padding: 0.15rem;
+    color: var(--ink-3);
+    cursor: pointer;
+    line-height: 0;
+  }
+  .installbtn:hover {
+    color: var(--ink);
+  }
+  .hint {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    width: max-content;
+    max-width: 14rem;
+    padding: 0.5rem 0.7rem;
+    background: var(--card);
+    color: var(--ink-2);
+    border: var(--hair) solid var(--rule-strong);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    line-height: 1.4;
+  }
+  .hint[hidden] {
+    display: none;
+  }
+</style>

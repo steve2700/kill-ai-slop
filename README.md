@@ -10,7 +10,7 @@ so common you've stopped seeing it.
 **Kill AI Slop** is two things:
 
 1. **A website**, a multilingual field guide (English, Chinese, Japanese, and
-   Korean) that catalogues 33 AI-slop tells, each with an interactive
+   Korean) that catalogues 41 AI-slop tells, each with an interactive
    before→after demo showing the clean fix. The site is itself built as a
    rebuttal to everything it catalogues.
 2. **An Agent Skill**, `kill-ai-slop`, which turns that catalogue into action:
@@ -44,6 +44,14 @@ hierarchy from scale and space, hairline rules, no gradients / emoji / glass /
 badges. See `website/src/styles/tokens.css` for the rules it holds itself to,
 and `website/src/data/catalogue.ts` for the taxonomy (the single source of truth
 shared with the skill).
+
+### Test an image
+
+The site has a live image check (the **Try it** section). Drop in a poster, flyer or generated graphic and it reports which signals make it read as machine-polished: no grain, no quiet space, glow, mirror symmetry, perfectly smooth gradients and oversaturation, each with what a person would do instead. It runs entirely in the browser, so nothing is uploaded and no API key is needed. It measures polish, not AI: thresholds live in `website/src/scripts/imageCheck.ts` (`LIMITS`), tuned on a handful of posters, so adjust them on your own samples. The same section has an **Add human touch** step: grain, print slip, paper tone, and softened glow and saturation, applied in the browser and downloadable as PNG or JPG (`website/src/scripts/humanTouch.ts`). It changes finish only; quiet space and symmetry need a redesign. **Rebuild with less** (`website/src/scripts/posterBuilder.ts`) then rebuilds the poster from one headline, one line and one contact, in one typeface and one accent, off-centre with room to breathe; it also downloads as PNG or JPG. For a full visual review, use the skill's `references/imagery.md`.
+
+### Install as an app (PWA)
+
+The site is an installable Progressive Web App and works offline after the first visit. In Chrome, Edge or Android, use the install icon in the header or the browser's install prompt. On iOS Safari, tap Share, then Add to Home Screen. The service worker only registers in production builds (`npm run build`), so `npm run dev` stays uncached.
 
 ## The skill
 
